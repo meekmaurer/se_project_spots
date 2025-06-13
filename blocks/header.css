@@ -1,7 +1,10 @@
 .header {
+  background-color: #fff;
   display: flex;
-  align-items: self-end;
+  justify-content: center;
 }
 
-.header__profile {
+.header__logo {
+  width: 94px;
+  height: 26px;
 }

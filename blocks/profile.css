@@ -1,0 +1,45 @@
+.profile {
+  display: flex;
+  padding: 34px 0 20px;
+  border-bottom: 1px solid rgba(33, 33, 33, 0.4);
+}
+
+.profile__avatar {
+  margin-right: 20px;
+  border-radius: 9.11px;
+  width: 216px;
+  height: 216px;
+}
+
+.profile__column {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__name {
+  margin: 0 0 12px;
+}
+
+.profile__description {
+  margin: 0;
+}
+
+.profile__edit-btn {
+  gap: 9px;
+  display: flex;
+  margin-top: auto;
+  width: 121.58px;
+  height: 18px;
+  border-radius: 102.5px;
+  border-style: none;
+  opacity: 70%;
+}
+.profile__new-post-btn {
+  margin-left: auto;
+  margin-top: auto;
+  background-color: rgba(33, 33, 33, 1);
+  color: rgba(252, 245, 229, 1);
+  width: 179px;
+  height: 59px;
+  border-radius: 9.11px;
+}
