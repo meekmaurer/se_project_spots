@@ -1,6 +1,6 @@
 .profile {
   display: flex;
-  padding: 34px 0 20px;
+  padding: 34px 0 22.78px;
   border-bottom: 1px solid rgba(33, 33, 33, 0.4);
 }
 
@@ -25,6 +25,8 @@
 }
 
 .profile__edit-btn {
+  font-size: 16px;
+  font-weight: 500;
   gap: 9px;
   display: flex;
   margin-top: auto;
@@ -33,8 +35,11 @@
   border-radius: 102.5px;
   border-style: none;
   opacity: 70%;
+  background: rgba(252, 245, 229, 1);
 }
 .profile__new-post-btn {
+  display: flex;
+  align-items: center;
   margin-left: auto;
   margin-top: auto;
   background-color: rgba(33, 33, 33, 1);
@@ -42,4 +47,12 @@
   width: 179px;
   height: 59px;
   border-radius: 9.11px;
+  font-size: 18.22px;
+  font-weight: 500;
+}
+
+.profile__new-post__btn__icon {
+  width: 13.67px;
+  height: 13.67px;
+  margin: auto 9.11px auto 36.44px;
 }
