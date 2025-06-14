@@ -7,8 +7,8 @@
 .profile__avatar {
   margin-right: 20px;
   border-radius: 9.11px;
-  width: 216px;
-  height: 216px;
+  width: 190px;
+  height: 190px;
 }
 
 .profile__column {
@@ -17,20 +17,41 @@
 }
 
 .profile__name {
+  color: rgba(33, 33, 33, 1);
+  line-height: 1;
+  font-size: 32px;
+  font-weight: 500;
   margin: 0 0 12px;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  max-width: 420px;
 }
 
 .profile__description {
+  color: rgba(33, 33, 33, 0.7);
+  line-height: 1;
+  font-size: 16px;
+  font-weight: 500;
   margin: 0;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  max-width: 420px;
 }
 
 .profile__edit-btn {
+  line-height: 1;
   font-size: 16px;
   font-weight: 500;
   gap: 9px;
   display: flex;
   margin-top: auto;
-  width: 121.58px;
+  width: 128px;
   height: 18px;
   border-radius: 102.5px;
   border-style: none;
@@ -38,6 +59,7 @@
   background: rgba(252, 245, 229, 1);
 }
 .profile__new-post-btn {
+  line-height: 1;
   display: flex;
   align-items: center;
   margin-left: auto;
@@ -47,12 +69,56 @@
   width: 179px;
   height: 59px;
   border-radius: 9.11px;
-  font-size: 18.22px;
+  font-size: 16px;
   font-weight: 500;
 }
 
 .profile__new-post__btn__icon {
   width: 13.67px;
   height: 13.67px;
-  margin: auto 9.11px auto 36.44px;
+  margin-right: 9px;
+  margin-left: 32px;
+}
+
+@media screen and (max-width: 627px) {
+  .profile {
+    flex-direction: column;
+    padding-top: 20px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile__avatar {
+    margin: 0 0 12px;
+    width: 80px;
+    height: 80px;
+  }
+
+  .profile__name {
+    font-size: 20px;
+    margin: 0 0 6px;
+    max-width: 288px;
+  }
+  .profile__description {
+    margin: 0 0 32px;
+    max-width: 288px;
+  }
+
+  .profile__column {
+    margin: 0 0 20px;
+  }
+
+  .profile__edit-btn {
+    margin: 0;
+  }
+
+  .profile__new-post-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .profile__new-post__btn__icon {
+    margin-right: 9px;
+    margin-left: 0;
+  }
 }
