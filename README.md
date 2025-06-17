@@ -19,3 +19,5 @@ grid
 https://meekmaurer.github.io/se_project_spots/
 
 ![alt text](image-1.png)
+
+video link https://drive.google.com/file/d/1mq91iwNJFTyzxetIxUyMOc2gPBm47ePO/view?usp=sharing
