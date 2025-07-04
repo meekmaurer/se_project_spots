@@ -115,7 +115,7 @@
         <div class="modal__container">
           <button type="button" class="modal__close-btn"></button>
           <h2 class="modal__title">Edit Profile</h2>
-          <form action="add_later" class="modal__form">
+          <form class="modal__form" id="edit-profile-form">
             <label for="profile-name-input" class="modal__label"
               >Name
               <input
@@ -142,20 +142,20 @@
         <div class="modal__container">
           <button type="button" class="modal__close-btn"></button>
           <h2 class="modal__title">New post</h2>
-          <form action="add_later" class="modal__form">
-            <label for="profile-name-input" class="modal__label"
+          <form class="modal__form" id="new-post-form">
+            <label for="image-link-input" class="modal__label"
               >Image link
               <input
-                id="profile-name-input"
+                id="image-link-input"
                 type="text"
                 class="modal__input"
                 placeholder="Paste a link to the picture"
               />
             </label>
-            <label for="profile-description-input" class="modal__label"
+            <label for="caption-input" class="modal__label"
               >Caption
               <input
-                id="profile-description-input"
+                id="caption-input"
                 type="text"
                 class="modal__input"
                 placeholder="Type your caption"
