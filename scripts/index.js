@@ -15,6 +15,8 @@ profileEditbtn.addEventListener("click", function () {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescription.textContent;
 });
+// editProfileModal.addEventListener("submit", function (event)  {
+// event.preventDefault();
 
 modalCloseBtn.addEventListener("click", function () {
   editProfileModal.classList.remove("modal-is-open");
