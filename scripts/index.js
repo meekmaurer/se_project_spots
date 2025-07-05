@@ -1,6 +1,6 @@
 const profileEditbtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
-const modalCloseBtn = editProfileModal.querySelector(".modal__close-btn");
+const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 const editProfileNameInput = editProfileModal.querySelector(
@@ -11,29 +11,36 @@ const editProfileDescriptionInput = editProfileModal.querySelector(
 );
 const editProfileForm = editProfileModal.querySelector("#edit-profile-form");
 
+function openModal(modal) {
+  modal.classList.add("modal-is-open");
+}
+function closeModal(modal) {
+  modal.classList.remove("modal-is-open");
+}
+
 profileEditbtn.addEventListener("click", function () {
-  editProfileModal.classList.add("modal-is-open");
+  openModal(editProfileModal);
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescription.textContent;
 });
 
-modalCloseBtn.addEventListener("click", function () {
-  editProfileModal.classList.remove("modal-is-open");
+editProfileCloseBtn.addEventListener("click", function () {
+  closeModal(editProfileModal);
 });
 
 const profileNewPostbtn = document.querySelector(".profile__new-post-btn");
 const newPostModal = document.querySelector("#new-post-modal");
-const modalCloseBtn2 = newPostModal.querySelector(".modal__close-btn");
+const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
 const addCardformElement = document.querySelector("#new-post-form");
 const linkInput = document.querySelector("#image-link-input");
 const nameInput = document.querySelector("#caption-input");
 
 profileNewPostbtn.addEventListener("click", function () {
-  newPostModal.classList.add("modal-is-open");
+  openModal(newPostModal);
 });
 
-modalCloseBtn2.addEventListener("click", function () {
-  newPostModal.classList.remove("modal-is-open");
+newPostCloseBtn.addEventListener("click", function () {
+  closeModal(newPostModal);
 });
 
 function handleEditProfileSubmit(evt) {
