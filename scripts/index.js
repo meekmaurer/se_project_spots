@@ -99,8 +99,16 @@ function handleAddCardSubmit(evt) {
   console.log(linkInput.value);
 }
 
-addCardformElement.addEventListener("submit", handleAddCardSubmit);
-
+addCardformElement.addEventListener("submit", function (evt) {
+  evt.preventDefault();
+  const inputValues = {
+    name: nameInput.value,
+    link: linkInput.value,
+  };
+  const cardElement = getCardElement(inputValues);
+  cardsList.prepend(cardElement);
+  closeModal(newPostModal);
+});
 initialCards.forEach(function (item) {
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
