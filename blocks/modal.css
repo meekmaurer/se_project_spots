@@ -25,6 +25,8 @@
 }
 
 .modal__image-container {
+  padding: 16px;
+  max-width: 100%;
   position: relative;
 }
 
@@ -38,7 +40,7 @@
 }
 
 .modal__caption {
-  width: 214px;
+  width: 100%;
   font-family: Poppins, sans-serif;
   text-align: center;
   margin-top: 8px;
@@ -152,6 +154,10 @@
 }
 
 @media screen and (max-width: 480px) {
+  .modal__image-container {
+    max-width: 100%;
+  }
+
   .modal__save-btn {
     max-width: none;
   }
@@ -166,21 +172,21 @@
     font-size: 20px;
   }
   .modal__label {
-    font: size 16px;
+    font-size: 16px;
   }
   .modal__input {
     font-size: 16px;
     margin-bottom: 24px;
   }
   .modal__image {
-    width: 100%;
+    max-width: 100%;
   }
 }
 
 @media screen and (max-width: 626px) {
   /*placed below to avoid being over writen*/
   .modal__image {
-    padding: 16px;
+    max-width: 100%;
   }
   .modal__close-btn_type_preview {
     top: -48px;
@@ -189,8 +195,5 @@
   .modal_type_preview {
     max-width: unset;
     padding: 16px;
-  }
-  .modal__image {
-    width: 100%;
   }
 }
