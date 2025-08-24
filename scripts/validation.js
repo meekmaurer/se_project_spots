@@ -1,7 +1,8 @@
 const showInputError = (formElement, inputElement, errorMessage) => {
-  const errorMessageID = inputElement.id + "error";
-  const errorMessageElement = document.querySelector("#" + errorMessageID);
-  errorMessageElement.textContent = errorMessage;
+  console.log(errorMessage);
+  const errorMsgID = inputElement.id + "-error";
+  const errorMsgElement = document.querySelector("#" + errorMsgID);
+  errorMsgElement.textContent = errorMessage;
 };
 
 const checkInputValidity = (formElement, inputElement) => {
@@ -10,22 +11,25 @@ const checkInputValidity = (formElement, inputElement) => {
   }
 };
 
-const setEventListeners = (formElement) => {
-  const inputList = formElement.querySelectorAll("modal__input");
-  const buttonElement = formElement.querySelector("modal__button");
+const setEventListener = (formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll(".modal__input"));
+  //  const buttonElement = formElement.querySelector(".modal__button");
+
+  // toggleButtonState(inputList, buttonElement);
 
   inputList.forEach((inputElement) => {
-    inputElement.addEventListener("input", (event) => {
+    inputElement.addEventListener("input", function () {
       checkInputValidity(formElement, inputElement);
+      // toggleButtonState(inputList, buttonElement);
     });
   });
 };
 
-const enableValidation = () => {
-  const formList = document.querySelectorAll("modal__form");
+const enableValidaton = () => {
+  const formList = document.querySelectorAll(".modal__form");
   formList.forEach((formElement) => {
-    setEventListeners(formElement);
+    setEventListener(formElement);
   });
 };
 
-enableValidation();
+enableValidaton();
