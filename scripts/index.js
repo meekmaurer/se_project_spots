@@ -51,7 +51,7 @@ const previewModal = document.querySelector("#preview-modal");
 const previewModalCloseBtn = previewModal.querySelector(".modal__close-btn");
 const previewImageElement = previewModal.querySelector(".modal__image");
 const previewcaptionElement = previewModal.querySelector(".modal__caption");
-
+const cardSubmitButton = document.querySelector(".modal__button");
 const cardTemplate = document
   .querySelector("#card-template")
   .content.querySelector(".card");
@@ -96,9 +96,13 @@ function closeModal(modal) {
 }
 
 profileEditbtn.addEventListener("click", function () {
-  openModal(editProfileModal);
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescription.textContent;
+  resetValidation(editProfileForm, [
+    editProfileNameInput,
+    editProfileDescriptionInput,
+  ]);
+  openModal(editProfileModal);
 });
 
 editProfileCloseBtn.addEventListener("click", function () {
@@ -106,6 +110,7 @@ editProfileCloseBtn.addEventListener("click", function () {
 });
 
 profileNewPostbtn.addEventListener("click", function () {
+  resetValidation(newPostModal, [linkInput, nameInput]);
   openModal(newPostModal);
 });
 
@@ -138,6 +143,7 @@ addCardformElement.addEventListener("submit", function (evt) {
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
   closeModal(newPostModal);
+  disableButton(cardSubmitButton);
   linkInput.value = "";
   nameInput.value = "";
 });
@@ -145,3 +151,28 @@ initialCards.forEach(function (item) {
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
 });
+
+const escToClose = () => {
+  document.addEventListener("keydown", function (evt) {
+    if (evt.key === "Escape") {
+      const modalOpen = document.querySelector(".modal-is-open");
+      if (modalOpen) {
+        modalOpen.classList.remove("modal-is-open");
+      }
+    }
+  });
+};
+escToClose();
+
+const clickOutsideClick = () => {
+  document.addEventListener("click", function (evt) {
+    const modalOpen = document.querySelector(".modal-is-open");
+    if (modalOpen) {
+      const modalContainer = modalOpen.querySelector(".modal__container");
+      if (!modalContainer.contains(evt.target)) {
+        //modalOpen.classList.remove("modal-is-open");
+      }
+    }
+  });
+};
+clickOutsideClick();
