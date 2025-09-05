@@ -7,27 +7,47 @@ const settings = {
   errorClass: "modal__error_visible",
 };
 
-const showInputError = (formElement, inputElement, errorMessage) => {
+const showInputError = ({
+  formElement,
+  inputElement,
+  errorMessage,
+  config,
+}) => {
   const errorMsgID = inputElement.id + "-error";
   const errorMsgElement = formElement.querySelector("#" + errorMsgID);
   errorMsgElement.textContent = errorMessage;
-  errorMsgElement.classList.add("modal__error_visible");
-  inputElement.classList.add("modal__input_type_error");
+  errorMsgElement.classList.add(config.errorClass);
+  inputElement.classList.add(config.inputErrorClass);
 };
 
-const hideInputError = (formElement, inputElement, errorMessage) => {
+const hideInputError = ({
+  formElement,
+  inputElement,
+  errorMessage,
+  config,
+}) => {
   const errorMsgID = inputElement.id + "-error";
   const errorMsgElement = formElement.querySelector("#" + errorMsgID);
   errorMsgElement.textContent = errorMessage;
-  errorMsgElement.classList.remove("modal__error_visible");
-  inputElement.classList.remove("modal__input_type_error");
+  errorMsgElement.classList.remove(config.errorClass);
+  inputElement.classList.remove(config.inputErrorClass);
 };
 
-const checkInputValidity = (formElement, inputElement) => {
+const checkInputValidity = ({ formElement, inputElement, config }) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    showInputError({
+      formElement: formElement,
+      inputElement: inputElement,
+      errorMessage: inputElement.validationMessage,
+      config: config,
+    });
   } else {
-    hideInputError(formElement, inputElement, inputElement.validationMessage);
+    hideInputError({
+      formElement: formElement,
+      inputElement: inputElement,
+      errorMessage: inputElement.validationMessage,
+      config: config,
+    });
   }
 };
 
@@ -37,13 +57,13 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-const toggleButtonState = (inputList, buttonElement) => {
+const toggleButtonState = ({ inputList, buttonElement, config }) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add("modal__button_disabled");
+    buttonElement.classList.add(config.inactiveButtonClass);
     disableButton(buttonElement);
   } else {
     buttonElement.disabled = false;
-    buttonElement.classList.remove("modal__button_disabled");
+    buttonElement.classList.remove(config.inactiveButtonClass);
   }
 };
 
@@ -51,22 +71,29 @@ const disableButton = (buttonElement) => {
   buttonElement.disabled = true;
 };
 
-const resetValidation = (formElement, inputList) => {
-  inputList.forEach((input) => {
-    hideInputError(formElement, input);
+const resetValidation = ({ formElement, inputList, config }) => {
+  inputList.forEach((inputElement) => {
+    hideInputError({
+      formElement: formElement,
+      inputElement: inputElement,
+      errorMessage: inputElement.validationMessage,
+      config: config,
+    });
   });
 };
 
-const setEventListener = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll(".modal__input"));
-  const buttonElement = formElement.querySelector(".modal__button");
+const setEventListener = ({ formElement, config }) => {
+  const inputList = Array.from(
+    formElement.querySelectorAll(config.inputSelector)
+  );
+  const buttonElement = formElement.querySelector(config.submitButtonSelector);
 
-  toggleButtonState(inputList, buttonElement);
+  toggleButtonState({ inputList, buttonElement, config });
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
-      checkInputValidity(formElement, inputElement);
-      toggleButtonState(inputList, buttonElement);
+      checkInputValidity({ formElement, inputElement, config });
+      toggleButtonState({ inputList, buttonElement, config });
     });
   });
 };
@@ -74,7 +101,7 @@ const setEventListener = (formElement) => {
 const enableValidaton = (config) => {
   const formList = document.querySelectorAll(config.formSelector);
   formList.forEach((formElement) => {
-    setEventListener(formElement);
+    setEventListener({ formElement, config });
   });
 };
 
