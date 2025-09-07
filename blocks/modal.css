@@ -171,11 +171,30 @@
 }
 
 .modal__button_disabled {
+  max-width: 156px;
+  width: 100%;
   background-color: rgba(33, 33, 33, 1);
   opacity: 0.5;
 }
 
 @media screen and (max-width: 480px) {
+  .modal__button {
+    cursor: pointer;
+    border: none;
+    color: rgba(255, 255, 255, 1);
+    max-width: 156px;
+    width: 100%;
+    border-radius: 8px;
+    background-color: rgba(33, 33, 33, 1);
+    padding: 18px 58px;
+  }
+
+  .modal__button_disabled {
+    max-width: 156px;
+    width: 100%;
+    background-color: rgba(33, 33, 33, 1);
+    opacity: 0.5;
+  }
   .modal__image-container {
     max-width: 100%;
   }
@@ -207,6 +226,24 @@
 
 @media screen and (max-width: 626px) {
   /*placed below to avoid being over writen*/
+
+  .modal__button {
+    cursor: pointer;
+    border: none;
+    color: rgba(255, 255, 255, 1);
+    max-width: 156px;
+    width: 100%;
+    border-radius: 8px;
+    background-color: rgba(33, 33, 33, 1);
+    padding: 18px 58px;
+  }
+
+  .modal__button_disabled {
+    max-width: 156px;
+    width: 100%;
+    background-color: rgba(33, 33, 33, 1);
+    opacity: 0.5;
+  }
   .modal__image {
     max-width: 100%;
   }
