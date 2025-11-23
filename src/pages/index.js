@@ -1,3 +1,10 @@
+import "./index.css";
+import {
+  enableValidaton,
+  validationConfig,
+  resetValidation,
+} from "../scripts/validation.js";
+
 const initialCards = [
   {
     name: "Gloden Gate Bridge",
@@ -116,7 +123,7 @@ profileEditBtn.addEventListener("click", function () {
   resetValidation({
     formElement: editProfileForm,
     inputList: [editProfileNameInput, editProfileDescriptionInput],
-    config: settings,
+    config: validationConfig,
   });
 
   openModal(editProfileModal);
@@ -157,3 +164,5 @@ initialCards.forEach(function (item) {
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
 });
+
+enableValidaton(validationConfig);
