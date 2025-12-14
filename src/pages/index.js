@@ -1,4 +1,4 @@
-import Api from "../scripts/Api.js";
+import Api from "../utils/Api.js";
 import "./index.css";
 import {
   enableValidaton,
@@ -39,19 +39,21 @@ import {
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  Headers: {
+  headers: {
     authorization: "c6fe6301-d306-4acc-be32-290ad67fcfdc",
     "Content-Type": "application/json",
   },
 });
 
-api.getInitialCards().then((cards) => {
-  console.log(cards);
-  cards.forEach(function (item) {
-    const cardElement = getCardElement(item);
-    cardsList.append(cardElement);
-  });
-});
+api
+  .getAppInfo()
+  .then(([cards]) => {
+    cards.forEach(function (item) {
+      const cardElement = getCardElement(item);
+      cardsList.append(cardElement);
+    });
+  })
+  .catch(console.error);
 
 const profileEditBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
