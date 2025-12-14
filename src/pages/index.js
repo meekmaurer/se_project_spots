@@ -1,3 +1,4 @@
+import Api from "../scripts/Api.js";
 import "./index.css";
 import {
   enableValidaton,
@@ -5,7 +6,7 @@ import {
   resetValidation,
 } from "../scripts/validation.js";
 
-const initialCards = [
+/*const initialCards = [
   {
     name: "Gloden Gate Bridge",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
@@ -34,7 +35,24 @@ const initialCards = [
     name: "Mountain house",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
   },
-];
+];*/
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  Headers: {
+    authorization: "c6fe6301-d306-4acc-be32-290ad67fcfdc",
+    "Content-Type": "application/json",
+  },
+});
+
+api.getInitialCards().then((cards) => {
+  console.log(cards);
+  cards.forEach(function (item) {
+    const cardElement = getCardElement(item);
+    cardsList.append(cardElement);
+  });
+});
+
 const profileEditBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
@@ -159,10 +177,6 @@ addCardformElement.addEventListener("submit", function (evt) {
   closeModal(newPostModal);
   disableButton(cardSubmitButton, settings);
   evt.target.reset();
-});
-initialCards.forEach(function (item) {
-  const cardElement = getCardElement(item);
-  cardsList.append(cardElement);
 });
 
 enableValidaton(validationConfig);
