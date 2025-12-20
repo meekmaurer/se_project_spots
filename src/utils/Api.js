@@ -4,8 +4,20 @@ class Api {
     this._headers = headers;
   }
 
+  getUserInfo() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      headers: this._headers,
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error:${res.status}`);
+    });
+  }
+
   getAppInfo() {
-    return Promise.all([this.getInitialCards()]);
+    // call getUserInfo in the array
+    return Promise.all([this.getInitialCards(), this.getUserInfo()]);
   }
 
   getInitialCards() {
@@ -15,10 +27,26 @@ class Api {
       if (res.ok) {
         return res.json();
       }
-      Promise.reject(`Error:${res.status}`);
+      return Promise.reject(`Error:${res.status}`);
     });
   }
 
-  // other methods
+  editUserInfo({ name, about }) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+
+      body: JSON.stringify({
+        name,
+        about,
+      }),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error:${res.status}`);
+    });
+  }
 }
+
 export default Api;
