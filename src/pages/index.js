@@ -52,13 +52,13 @@ api
       const cardElement = getCardElement(item);
       cardsList.append(cardElement);
     });
-
-    // handle the user's info
-    // set the src of the avatar image
-    //set the textContent of the text
+    profileNameEl.textContent = data.name;
+    profileDescription.textContent = data.about;
+    profileAvatar.src = data.avatar;
   })
   .catch(console.error);
 
+const profileAvatar = document.querySelector(".profile__avatar");
 const profileEditBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
